@@ -1,0 +1,14 @@
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.fDangNhap.resources
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GUI.fQuanLy.resources
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GUI.fQuanLyTaiKhoan.resources
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GUI.fDanhSachBenhNhan.resources
+D:\Trang\Study\0 CNTT\THIET KE PHAN MEM\TEMP\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GUI.fDangKyBenhNhan.resources

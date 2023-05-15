@@ -9,6 +9,6 @@ namespace QUANLYPHONGKHAM.DAL
 {
     public interface ILuuTru
     {
-        DataTable TaiDanhSach(string select, string dbo);
+        DataTable TaiDanhSach(string select, string dbo, string where = null);
     }
 }

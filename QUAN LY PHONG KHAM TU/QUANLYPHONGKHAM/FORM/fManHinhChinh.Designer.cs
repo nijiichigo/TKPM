@@ -130,6 +130,7 @@ namespace QUANLYPHONGKHAM.FORM
             this.Name = "fManHinhChinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Màn hình chính";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fManHinhChinh_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

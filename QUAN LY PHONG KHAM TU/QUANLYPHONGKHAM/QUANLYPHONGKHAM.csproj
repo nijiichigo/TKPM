@@ -97,7 +97,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SERVICE\IXuLyBenhNhan.cs" />
+    <Compile Include="SERVICE\IXuLyChung.cs" />
+    <Compile Include="SERVICE\IXuLyDangKyKham.cs" />
     <Compile Include="SERVICE\XuLyBenhNhan.cs" />
+    <Compile Include="SERVICE\XuLyChung.cs" />
+    <Compile Include="SERVICE\XuLyDangKyKham.cs" />
     <EmbeddedResource Include="FORM\fDangKyKham.resx">
       <DependentUpon>fDangKyKham.cs</DependentUpon>
     </EmbeddedResource>

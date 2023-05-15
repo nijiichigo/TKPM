@@ -24,5 +24,10 @@ namespace QUANLYPHONGKHAM.FORM
             f.ShowDialog();
             this.Show();
         }
+
+        private void fManHinhChinh_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

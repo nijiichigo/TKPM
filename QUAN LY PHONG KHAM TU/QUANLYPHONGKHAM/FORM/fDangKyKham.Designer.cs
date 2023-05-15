@@ -31,14 +31,20 @@ namespace QUANLYPHONGKHAM.FORM
         {
             this.lTieuDe = new System.Windows.Forms.Label();
             this.lNgay = new System.Windows.Forms.Label();
-            this.tNgay = new System.Windows.Forms.TextBox();
+            this.tbNgay = new System.Windows.Forms.TextBox();
             this.pTieuDe = new System.Windows.Forms.Panel();
             this.pNut = new System.Windows.Forms.Panel();
-            this.bDangKyKham = new System.Windows.Forms.Button();
+            this.bReloadDanhSach = new System.Windows.Forms.Button();
+            this.pTimKiem = new System.Windows.Forms.Panel();
+            this.rbDienThoai = new System.Windows.Forms.RadioButton();
+            this.rbMaBN = new System.Windows.Forms.RadioButton();
+            this.rbNamSinh = new System.Windows.Forms.RadioButton();
+            this.rbHoTenBN = new System.Windows.Forms.RadioButton();
             this.bTimKiem = new System.Windows.Forms.Button();
-            this.bSua = new System.Windows.Forms.Button();
+            this.bDieuChinh = new System.Windows.Forms.Button();
             this.bDangKyBN = new System.Windows.Forms.Button();
             this.bXoaBN = new System.Windows.Forms.Button();
+            this.bDangKyKham = new System.Windows.Forms.Button();
             this.pThongTinBenhNhan = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbDiaChi = new System.Windows.Forms.TextBox();
@@ -53,6 +59,7 @@ namespace QUANLYPHONGKHAM.FORM
             this.tbDienThoai = new System.Windows.Forms.TextBox();
             this.lDienThoai = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.cbbGioiTinh = new System.Windows.Forms.ComboBox();
             this.lGioiTinh = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tbNamSinh = new System.Windows.Forms.TextBox();
@@ -60,16 +67,12 @@ namespace QUANLYPHONGKHAM.FORM
             this.dgvDanhSachBenhNhan = new System.Windows.Forms.DataGridView();
             this.dgvDanhSachKham = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbbGioiTinh = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.rbMaBN = new System.Windows.Forms.RadioButton();
-            this.rbHoTenBN = new System.Windows.Forms.RadioButton();
-            this.rbNamSinh = new System.Windows.Forms.RadioButton();
-            this.rbDienThoai = new System.Windows.Forms.RadioButton();
-            this.lDanhSachKham = new System.Windows.Forms.Label();
             this.bHuyKham = new System.Windows.Forms.Button();
+            this.lDanhSachKham = new System.Windows.Forms.Label();
             this.pTieuDe.SuspendLayout();
             this.pNut.SuspendLayout();
+            this.pTimKiem.SuspendLayout();
             this.pThongTinBenhNhan.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -96,74 +99,132 @@ namespace QUANLYPHONGKHAM.FORM
             // lNgay
             // 
             this.lNgay.AutoSize = true;
-            this.lNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lNgay.Location = new System.Drawing.Point(3, 5);
             this.lNgay.Name = "lNgay";
-            this.lNgay.Size = new System.Drawing.Size(81, 29);
+            this.lNgay.Size = new System.Drawing.Size(59, 20);
             this.lNgay.TabIndex = 1;
             this.lNgay.Text = "Ngày: ";
             // 
-            // tNgay
+            // tbNgay
             // 
-            this.tNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tNgay.Location = new System.Drawing.Point(90, 3);
-            this.tNgay.Name = "tNgay";
-            this.tNgay.Size = new System.Drawing.Size(212, 31);
-            this.tNgay.TabIndex = 2;
+            this.tbNgay.Enabled = false;
+            this.tbNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNgay.Location = new System.Drawing.Point(77, 3);
+            this.tbNgay.Name = "tbNgay";
+            this.tbNgay.ReadOnly = true;
+            this.tbNgay.Size = new System.Drawing.Size(164, 26);
+            this.tbNgay.TabIndex = 2;
             // 
             // pTieuDe
             // 
             this.pTieuDe.Controls.Add(this.lTieuDe);
-            this.pTieuDe.Location = new System.Drawing.Point(109, 2);
+            this.pTieuDe.Location = new System.Drawing.Point(168, 2);
             this.pTieuDe.Name = "pTieuDe";
             this.pTieuDe.Size = new System.Drawing.Size(443, 43);
             this.pTieuDe.TabIndex = 0;
             // 
             // pNut
             // 
-            this.pNut.Controls.Add(this.rbDienThoai);
-            this.pNut.Controls.Add(this.rbNamSinh);
-            this.pNut.Controls.Add(this.rbHoTenBN);
-            this.pNut.Controls.Add(this.rbMaBN);
+            this.pNut.Controls.Add(this.bReloadDanhSach);
+            this.pNut.Controls.Add(this.pTimKiem);
             this.pNut.Controls.Add(this.bTimKiem);
-            this.pNut.Controls.Add(this.bSua);
+            this.pNut.Controls.Add(this.bDieuChinh);
             this.pNut.Controls.Add(this.bDangKyBN);
             this.pNut.Controls.Add(this.bXoaBN);
-            this.pNut.Location = new System.Drawing.Point(12, 224);
+            this.pNut.Location = new System.Drawing.Point(4, 224);
             this.pNut.Name = "pNut";
-            this.pNut.Size = new System.Drawing.Size(646, 52);
+            this.pNut.Size = new System.Drawing.Size(738, 52);
             this.pNut.TabIndex = 8;
             // 
-            // bDangKyKham
+            // bReloadDanhSach
             // 
-            this.bDangKyKham.Location = new System.Drawing.Point(361, 2);
-            this.bDangKyKham.Name = "bDangKyKham";
-            this.bDangKyKham.Size = new System.Drawing.Size(95, 43);
-            this.bDangKyKham.TabIndex = 13;
-            this.bDangKyKham.Text = "Đăng ký khám";
-            this.bDangKyKham.UseVisualStyleBackColor = true;
+            this.bReloadDanhSach.Location = new System.Drawing.Point(306, 3);
+            this.bReloadDanhSach.Name = "bReloadDanhSach";
+            this.bReloadDanhSach.Size = new System.Drawing.Size(95, 43);
+            this.bReloadDanhSach.TabIndex = 12;
+            this.bReloadDanhSach.Text = "Reload danh sách";
+            this.bReloadDanhSach.UseVisualStyleBackColor = true;
+            this.bReloadDanhSach.Click += new System.EventHandler(this.bReloadDanhSach_Click);
+            // 
+            // pTimKiem
+            // 
+            this.pTimKiem.Controls.Add(this.rbDienThoai);
+            this.pTimKiem.Controls.Add(this.rbMaBN);
+            this.pTimKiem.Controls.Add(this.rbNamSinh);
+            this.pTimKiem.Controls.Add(this.rbHoTenBN);
+            this.pTimKiem.Location = new System.Drawing.Point(510, 3);
+            this.pTimKiem.Name = "pTimKiem";
+            this.pTimKiem.Size = new System.Drawing.Size(216, 46);
+            this.pTimKiem.TabIndex = 14;
+            // 
+            // rbDienThoai
+            // 
+            this.rbDienThoai.AutoSize = true;
+            this.rbDienThoai.Location = new System.Drawing.Point(103, 26);
+            this.rbDienThoai.Name = "rbDienThoai";
+            this.rbDienThoai.Size = new System.Drawing.Size(73, 17);
+            this.rbDienThoai.TabIndex = 16;
+            this.rbDienThoai.TabStop = true;
+            this.rbDienThoai.Text = "Điện thoại";
+            this.rbDienThoai.UseVisualStyleBackColor = true;
+            // 
+            // rbMaBN
+            // 
+            this.rbMaBN.AutoSize = true;
+            this.rbMaBN.Location = new System.Drawing.Point(3, 3);
+            this.rbMaBN.Name = "rbMaBN";
+            this.rbMaBN.Size = new System.Drawing.Size(94, 17);
+            this.rbMaBN.TabIndex = 13;
+            this.rbMaBN.TabStop = true;
+            this.rbMaBN.Text = "Mã bệnh nhân";
+            this.rbMaBN.UseVisualStyleBackColor = true;
+            // 
+            // rbNamSinh
+            // 
+            this.rbNamSinh.AutoSize = true;
+            this.rbNamSinh.Location = new System.Drawing.Point(3, 26);
+            this.rbNamSinh.Name = "rbNamSinh";
+            this.rbNamSinh.Size = new System.Drawing.Size(69, 17);
+            this.rbNamSinh.TabIndex = 15;
+            this.rbNamSinh.TabStop = true;
+            this.rbNamSinh.Text = "Năm sinh";
+            this.rbNamSinh.UseVisualStyleBackColor = true;
+            // 
+            // rbHoTenBN
+            // 
+            this.rbHoTenBN.AutoSize = true;
+            this.rbHoTenBN.Location = new System.Drawing.Point(103, 3);
+            this.rbHoTenBN.Name = "rbHoTenBN";
+            this.rbHoTenBN.Size = new System.Drawing.Size(111, 17);
+            this.rbHoTenBN.TabIndex = 14;
+            this.rbHoTenBN.TabStop = true;
+            this.rbHoTenBN.Text = "Họ tên bệnh nhân";
+            this.rbHoTenBN.UseVisualStyleBackColor = true;
             // 
             // bTimKiem
             // 
-            this.bTimKiem.Location = new System.Drawing.Point(312, 3);
+            this.bTimKiem.Location = new System.Drawing.Point(412, 3);
             this.bTimKiem.Name = "bTimKiem";
             this.bTimKiem.Size = new System.Drawing.Size(95, 43);
-            this.bTimKiem.TabIndex = 12;
+            this.bTimKiem.TabIndex = 13;
             this.bTimKiem.Text = "Tìm kiếm";
             this.bTimKiem.UseVisualStyleBackColor = true;
+            this.bTimKiem.Click += new System.EventHandler(this.bTimKiem_Click);
             // 
-            // bSua
+            // bDieuChinh
             // 
-            this.bSua.Location = new System.Drawing.Point(211, 3);
-            this.bSua.Name = "bSua";
-            this.bSua.Size = new System.Drawing.Size(95, 43);
-            this.bSua.TabIndex = 11;
-            this.bSua.Text = "Điều chỉnh thông tin";
-            this.bSua.UseVisualStyleBackColor = true;
+            this.bDieuChinh.Location = new System.Drawing.Point(205, 3);
+            this.bDieuChinh.Name = "bDieuChinh";
+            this.bDieuChinh.Size = new System.Drawing.Size(95, 43);
+            this.bDieuChinh.TabIndex = 11;
+            this.bDieuChinh.Text = "Điều chỉnh thông tin";
+            this.bDieuChinh.UseVisualStyleBackColor = true;
+            this.bDieuChinh.Click += new System.EventHandler(this.bDieuChinh_Click);
             // 
             // bDangKyBN
             // 
-            this.bDangKyBN.Location = new System.Drawing.Point(9, 3);
+            this.bDangKyBN.Location = new System.Drawing.Point(3, 3);
             this.bDangKyBN.Name = "bDangKyBN";
             this.bDangKyBN.Size = new System.Drawing.Size(95, 43);
             this.bDangKyBN.TabIndex = 9;
@@ -173,12 +234,23 @@ namespace QUANLYPHONGKHAM.FORM
             // 
             // bXoaBN
             // 
-            this.bXoaBN.Location = new System.Drawing.Point(110, 3);
+            this.bXoaBN.Location = new System.Drawing.Point(104, 3);
             this.bXoaBN.Name = "bXoaBN";
             this.bXoaBN.Size = new System.Drawing.Size(95, 43);
             this.bXoaBN.TabIndex = 10;
             this.bXoaBN.Text = "Xóa bệnh nhân";
             this.bXoaBN.UseVisualStyleBackColor = true;
+            this.bXoaBN.Click += new System.EventHandler(this.bXoaBN_Click);
+            // 
+            // bDangKyKham
+            // 
+            this.bDangKyKham.Location = new System.Drawing.Point(290, 2);
+            this.bDangKyKham.Name = "bDangKyKham";
+            this.bDangKyKham.Size = new System.Drawing.Size(95, 43);
+            this.bDangKyKham.TabIndex = 17;
+            this.bDangKyKham.Text = "Đăng ký khám";
+            this.bDangKyKham.UseVisualStyleBackColor = true;
+            this.bDangKyKham.Click += new System.EventHandler(this.bDangKyKham_Click);
             // 
             // pThongTinBenhNhan
             // 
@@ -188,7 +260,7 @@ namespace QUANLYPHONGKHAM.FORM
             this.pThongTinBenhNhan.Controls.Add(this.panel4);
             this.pThongTinBenhNhan.Controls.Add(this.panel9);
             this.pThongTinBenhNhan.Controls.Add(this.panel6);
-            this.pThongTinBenhNhan.Location = new System.Drawing.Point(21, 51);
+            this.pThongTinBenhNhan.Location = new System.Drawing.Point(80, 51);
             this.pThongTinBenhNhan.Name = "pThongTinBenhNhan";
             this.pThongTinBenhNhan.Size = new System.Drawing.Size(580, 170);
             this.pThongTinBenhNhan.TabIndex = 1;
@@ -303,6 +375,18 @@ namespace QUANLYPHONGKHAM.FORM
             this.panel9.Size = new System.Drawing.Size(269, 24);
             this.panel9.TabIndex = 5;
             // 
+            // cbbGioiTinh
+            // 
+            this.cbbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbGioiTinh.FormattingEnabled = true;
+            this.cbbGioiTinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.cbbGioiTinh.Location = new System.Drawing.Point(94, 3);
+            this.cbbGioiTinh.Name = "cbbGioiTinh";
+            this.cbbGioiTinh.Size = new System.Drawing.Size(159, 21);
+            this.cbbGioiTinh.TabIndex = 1;
+            // 
             // lGioiTinh
             // 
             this.lGioiTinh.AutoSize = true;
@@ -339,114 +423,61 @@ namespace QUANLYPHONGKHAM.FORM
             // 
             // dgvDanhSachBenhNhan
             // 
+            this.dgvDanhSachBenhNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDanhSachBenhNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSachBenhNhan.Location = new System.Drawing.Point(12, 282);
             this.dgvDanhSachBenhNhan.Name = "dgvDanhSachBenhNhan";
-            this.dgvDanhSachBenhNhan.Size = new System.Drawing.Size(646, 387);
-            this.dgvDanhSachBenhNhan.TabIndex = 14;
+            this.dgvDanhSachBenhNhan.Size = new System.Drawing.Size(716, 387);
+            this.dgvDanhSachBenhNhan.TabIndex = 15;
+            this.dgvDanhSachBenhNhan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachBenhNhan_CellClick);
             // 
             // dgvDanhSachKham
             // 
             this.dgvDanhSachKham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSachKham.Location = new System.Drawing.Point(12, 100);
             this.dgvDanhSachKham.Name = "dgvDanhSachKham";
-            this.dgvDanhSachKham.Size = new System.Drawing.Size(563, 567);
-            this.dgvDanhSachKham.TabIndex = 16;
+            this.dgvDanhSachKham.Size = new System.Drawing.Size(489, 567);
+            this.dgvDanhSachKham.TabIndex = 19;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lDanhSachKham);
             this.panel1.Controls.Add(this.dgvDanhSachKham);
-            this.panel1.Location = new System.Drawing.Point(664, 2);
+            this.panel1.Location = new System.Drawing.Point(736, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(588, 680);
+            this.panel1.Size = new System.Drawing.Size(516, 680);
             this.panel1.TabIndex = 15;
-            // 
-            // cbbGioiTinh
-            // 
-            this.cbbGioiTinh.FormattingEnabled = true;
-            this.cbbGioiTinh.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.cbbGioiTinh.Location = new System.Drawing.Point(94, 3);
-            this.cbbGioiTinh.Name = "cbbGioiTinh";
-            this.cbbGioiTinh.Size = new System.Drawing.Size(159, 21);
-            this.cbbGioiTinh.TabIndex = 1;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.bHuyKham);
-            this.panel2.Controls.Add(this.tNgay);
+            this.panel2.Controls.Add(this.tbNgay);
             this.panel2.Controls.Add(this.bDangKyKham);
             this.panel2.Controls.Add(this.lNgay);
             this.panel2.Location = new System.Drawing.Point(15, 46);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(560, 48);
-            this.panel2.TabIndex = 17;
+            this.panel2.Size = new System.Drawing.Size(497, 48);
+            this.panel2.TabIndex = 16;
             // 
-            // rbMaBN
+            // bHuyKham
             // 
-            this.rbMaBN.AutoSize = true;
-            this.rbMaBN.Location = new System.Drawing.Point(414, 4);
-            this.rbMaBN.Name = "rbMaBN";
-            this.rbMaBN.Size = new System.Drawing.Size(94, 17);
-            this.rbMaBN.TabIndex = 13;
-            this.rbMaBN.TabStop = true;
-            this.rbMaBN.Text = "Mã bệnh nhân";
-            this.rbMaBN.UseVisualStyleBackColor = true;
-            // 
-            // rbHoTenBN
-            // 
-            this.rbHoTenBN.AutoSize = true;
-            this.rbHoTenBN.Location = new System.Drawing.Point(514, 4);
-            this.rbHoTenBN.Name = "rbHoTenBN";
-            this.rbHoTenBN.Size = new System.Drawing.Size(111, 17);
-            this.rbHoTenBN.TabIndex = 14;
-            this.rbHoTenBN.TabStop = true;
-            this.rbHoTenBN.Text = "Họ tên bệnh nhân";
-            this.rbHoTenBN.UseVisualStyleBackColor = true;
-            // 
-            // rbNamSinh
-            // 
-            this.rbNamSinh.AutoSize = true;
-            this.rbNamSinh.Location = new System.Drawing.Point(414, 27);
-            this.rbNamSinh.Name = "rbNamSinh";
-            this.rbNamSinh.Size = new System.Drawing.Size(69, 17);
-            this.rbNamSinh.TabIndex = 15;
-            this.rbNamSinh.TabStop = true;
-            this.rbNamSinh.Text = "Năm sinh";
-            this.rbNamSinh.UseVisualStyleBackColor = true;
-            // 
-            // rbDienThoai
-            // 
-            this.rbDienThoai.AutoSize = true;
-            this.rbDienThoai.Location = new System.Drawing.Point(514, 27);
-            this.rbDienThoai.Name = "rbDienThoai";
-            this.rbDienThoai.Size = new System.Drawing.Size(73, 17);
-            this.rbDienThoai.TabIndex = 16;
-            this.rbDienThoai.TabStop = true;
-            this.rbDienThoai.Text = "Điện thoại";
-            this.rbDienThoai.UseVisualStyleBackColor = true;
+            this.bHuyKham.Location = new System.Drawing.Point(391, 3);
+            this.bHuyKham.Name = "bHuyKham";
+            this.bHuyKham.Size = new System.Drawing.Size(95, 43);
+            this.bHuyKham.TabIndex = 18;
+            this.bHuyKham.Text = "Hủy khám";
+            this.bHuyKham.UseVisualStyleBackColor = true;
             // 
             // lDanhSachKham
             // 
             this.lDanhSachKham.AutoSize = true;
             this.lDanhSachKham.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold);
-            this.lDanhSachKham.Location = new System.Drawing.Point(98, 10);
+            this.lDanhSachKham.Location = new System.Drawing.Point(95, 7);
             this.lDanhSachKham.Name = "lDanhSachKham";
             this.lDanhSachKham.Size = new System.Drawing.Size(342, 33);
             this.lDanhSachKham.TabIndex = 3;
             this.lDanhSachKham.Text = "ĐĂNG KÝ KHÁM BỆNH";
-            // 
-            // bHuyKham
-            // 
-            this.bHuyKham.Location = new System.Drawing.Point(462, 2);
-            this.bHuyKham.Name = "bHuyKham";
-            this.bHuyKham.Size = new System.Drawing.Size(95, 43);
-            this.bHuyKham.TabIndex = 14;
-            this.bHuyKham.Text = "Hủy khám";
-            this.bHuyKham.UseVisualStyleBackColor = true;
             // 
             // fDangKyKham
             // 
@@ -465,7 +496,8 @@ namespace QUANLYPHONGKHAM.FORM
             this.pTieuDe.ResumeLayout(false);
             this.pTieuDe.PerformLayout();
             this.pNut.ResumeLayout(false);
-            this.pNut.PerformLayout();
+            this.pTimKiem.ResumeLayout(false);
+            this.pTimKiem.PerformLayout();
             this.pThongTinBenhNhan.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -493,10 +525,10 @@ namespace QUANLYPHONGKHAM.FORM
 
         private System.Windows.Forms.Label lTieuDe;
         private System.Windows.Forms.Label lNgay;
-        private System.Windows.Forms.TextBox tNgay;
+        private System.Windows.Forms.TextBox tbNgay;
         private System.Windows.Forms.Panel pTieuDe;
         private System.Windows.Forms.Panel pNut;
-        private System.Windows.Forms.Button bSua;
+        private System.Windows.Forms.Button bDieuChinh;
         private System.Windows.Forms.Button bDangKyBN;
         private System.Windows.Forms.Button bXoaBN;
         private System.Windows.Forms.Panel pThongTinBenhNhan;
@@ -530,5 +562,7 @@ namespace QUANLYPHONGKHAM.FORM
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button bHuyKham;
         private System.Windows.Forms.Label lDanhSachKham;
+        private System.Windows.Forms.Panel pTimKiem;
+        private System.Windows.Forms.Button bReloadDanhSach;
     }
 }

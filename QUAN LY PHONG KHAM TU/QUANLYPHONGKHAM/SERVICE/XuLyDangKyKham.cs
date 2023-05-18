@@ -55,7 +55,8 @@ namespace QUANLYPHONGKHAM.SERVICE
             query = $"SELECT MAX(STT) FROM dbo.DanhSachKham WHERE NgayKham = '{ngaykham}'";
             int stt = _xuLyChung.TaoSoThuTu(query);
 
-            query = $"INSERT dbo.DanhSachKham (MaDangKy, NgayKham, STT, MaBenhNhan, TinhTrang) VALUES ({madk} , '{ngaykham}', {stt} , {mabn} , 'ChoKham')";
+            query = $"INSERT dbo.DanhSachKham (MaDangKy, NgayKham, STT, MaBenhNhan, MaPhieuKham, MaHoaDon, MaTinhTrang) " +
+                $"VALUES ({madk} , '{ngaykham}', {stt} , {mabn} , NULL , NULL , 'ChoKham')";
             int result = _dataProvider.ExecuteNonQuery(query);
             if (result > 0)
             {

@@ -23,6 +23,7 @@ namespace QUANLYPHONGKHAM.FORM
         private string dienthoai { get { return tbDienThoai.Text.ToString(); } }
         private string diachi { get { return tbDiaChi.Text.ToString(); } }
         private string ngaykham { get { return tbNgay.Text.ToString(); } }
+        private string mbnkham { get { return lMabenhnhan.Text.ToString(); } }
         private string thongbao = string.Empty;
 
 
@@ -106,7 +107,7 @@ namespace QUANLYPHONGKHAM.FORM
 
         private void bXoaBN_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Xóa bệnh nhân có mã bệnh nhân là {mabn}?", "", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show($"Xóa bệnh nhân {hoten} - mã bệnh nhân: {mabn}?", "", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 bool xoabenhnhan = _xuLyBenhNhan.XoaBenhNhan(mabn, ref thongbao);
                 if (xoabenhnhan)
@@ -188,6 +189,17 @@ namespace QUANLYPHONGKHAM.FORM
             {
                 MessageBox.Show(thongbao);
             }
+        }
+
+        private void dgvDanhSachKham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = dgvDanhSachKham.CurrentRow.Index;
+            lMaBNKham.Text = dgvDanhSachKham.Rows[i].Cells[1].Value.ToString();
+        }
+
+        private void bHuyKham_Click(object sender, EventArgs e)
+        {
+            bool huykham = _xuLyDangKyKham.HuyKham(mabn, ngaykham, ref thongbao);
         }
     }
 }

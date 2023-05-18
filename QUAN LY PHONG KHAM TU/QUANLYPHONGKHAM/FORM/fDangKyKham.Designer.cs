@@ -70,6 +70,8 @@ namespace QUANLYPHONGKHAM.FORM
             this.panel2 = new System.Windows.Forms.Panel();
             this.bHuyKham = new System.Windows.Forms.Button();
             this.lDanhSachKham = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lMaBNKham = new System.Windows.Forms.Label();
             this.pTieuDe.SuspendLayout();
             this.pNut.SuspendLayout();
             this.pTimKiem.SuspendLayout();
@@ -84,6 +86,7 @@ namespace QUANLYPHONGKHAM.FORM
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachKham)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // lTieuDe
@@ -119,7 +122,7 @@ namespace QUANLYPHONGKHAM.FORM
             // pTieuDe
             // 
             this.pTieuDe.Controls.Add(this.lTieuDe);
-            this.pTieuDe.Location = new System.Drawing.Point(168, 2);
+            this.pTieuDe.Location = new System.Drawing.Point(170, 3);
             this.pTieuDe.Name = "pTieuDe";
             this.pTieuDe.Size = new System.Drawing.Size(443, 43);
             this.pTieuDe.TabIndex = 0;
@@ -132,9 +135,9 @@ namespace QUANLYPHONGKHAM.FORM
             this.pNut.Controls.Add(this.bDieuChinh);
             this.pNut.Controls.Add(this.bDangKyBN);
             this.pNut.Controls.Add(this.bXoaBN);
-            this.pNut.Location = new System.Drawing.Point(4, 224);
+            this.pNut.Location = new System.Drawing.Point(6, 225);
             this.pNut.Name = "pNut";
-            this.pNut.Size = new System.Drawing.Size(738, 52);
+            this.pNut.Size = new System.Drawing.Size(724, 52);
             this.pNut.TabIndex = 8;
             // 
             // bReloadDanhSach
@@ -260,7 +263,7 @@ namespace QUANLYPHONGKHAM.FORM
             this.pThongTinBenhNhan.Controls.Add(this.panel4);
             this.pThongTinBenhNhan.Controls.Add(this.panel9);
             this.pThongTinBenhNhan.Controls.Add(this.panel6);
-            this.pThongTinBenhNhan.Location = new System.Drawing.Point(80, 51);
+            this.pThongTinBenhNhan.Location = new System.Drawing.Point(82, 52);
             this.pThongTinBenhNhan.Name = "pThongTinBenhNhan";
             this.pThongTinBenhNhan.Size = new System.Drawing.Size(580, 170);
             this.pThongTinBenhNhan.TabIndex = 1;
@@ -425,7 +428,7 @@ namespace QUANLYPHONGKHAM.FORM
             // 
             this.dgvDanhSachBenhNhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDanhSachBenhNhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDanhSachBenhNhan.Location = new System.Drawing.Point(12, 282);
+            this.dgvDanhSachBenhNhan.Location = new System.Drawing.Point(14, 283);
             this.dgvDanhSachBenhNhan.Name = "dgvDanhSachBenhNhan";
             this.dgvDanhSachBenhNhan.Size = new System.Drawing.Size(716, 387);
             this.dgvDanhSachBenhNhan.TabIndex = 15;
@@ -438,19 +441,21 @@ namespace QUANLYPHONGKHAM.FORM
             this.dgvDanhSachKham.Name = "dgvDanhSachKham";
             this.dgvDanhSachKham.Size = new System.Drawing.Size(489, 567);
             this.dgvDanhSachKham.TabIndex = 19;
+            this.dgvDanhSachKham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachKham_CellClick);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.lDanhSachKham);
             this.panel1.Controls.Add(this.dgvDanhSachKham);
-            this.panel1.Location = new System.Drawing.Point(736, 2);
+            this.panel1.Location = new System.Drawing.Point(741, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(516, 680);
             this.panel1.TabIndex = 15;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lMaBNKham);
             this.panel2.Controls.Add(this.bHuyKham);
             this.panel2.Controls.Add(this.tbNgay);
             this.panel2.Controls.Add(this.bDangKyKham);
@@ -462,12 +467,13 @@ namespace QUANLYPHONGKHAM.FORM
             // 
             // bHuyKham
             // 
-            this.bHuyKham.Location = new System.Drawing.Point(391, 3);
+            this.bHuyKham.Location = new System.Drawing.Point(391, 2);
             this.bHuyKham.Name = "bHuyKham";
             this.bHuyKham.Size = new System.Drawing.Size(95, 43);
             this.bHuyKham.TabIndex = 18;
             this.bHuyKham.Text = "Hủy khám";
             this.bHuyKham.UseVisualStyleBackColor = true;
+            this.bHuyKham.Click += new System.EventHandler(this.bHuyKham_Click);
             // 
             // lDanhSachKham
             // 
@@ -479,16 +485,34 @@ namespace QUANLYPHONGKHAM.FORM
             this.lDanhSachKham.TabIndex = 3;
             this.lDanhSachKham.Text = "ĐĂNG KÝ KHÁM BỆNH";
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.pTieuDe);
+            this.panel8.Controls.Add(this.pThongTinBenhNhan);
+            this.panel8.Controls.Add(this.dgvDanhSachBenhNhan);
+            this.panel8.Controls.Add(this.pNut);
+            this.panel8.Location = new System.Drawing.Point(1, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(734, 682);
+            this.panel8.TabIndex = 16;
+            // 
+            // lMaBNKham
+            // 
+            this.lMaBNKham.AutoSize = true;
+            this.lMaBNKham.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lMaBNKham.Location = new System.Drawing.Point(3, 32);
+            this.lMaBNKham.Name = "lMaBNKham";
+            this.lMaBNKham.Size = new System.Drawing.Size(35, 13);
+            this.lMaBNKham.TabIndex = 17;
+            this.lMaBNKham.Text = "label1";
+            // 
             // fDangKyKham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvDanhSachBenhNhan);
-            this.Controls.Add(this.pNut);
-            this.Controls.Add(this.pThongTinBenhNhan);
-            this.Controls.Add(this.pTieuDe);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "fDangKyKham";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -517,6 +541,7 @@ namespace QUANLYPHONGKHAM.FORM
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -564,5 +589,7 @@ namespace QUANLYPHONGKHAM.FORM
         private System.Windows.Forms.Label lDanhSachKham;
         private System.Windows.Forms.Panel pTimKiem;
         private System.Windows.Forms.Button bReloadDanhSach;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lMaBNKham;
     }
 }

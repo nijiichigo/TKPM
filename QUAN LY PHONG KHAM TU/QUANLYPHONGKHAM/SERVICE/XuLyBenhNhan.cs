@@ -32,8 +32,8 @@ namespace QUANLYPHONGKHAM.SERVICE
             mabn = int.Parse(smabn);
 
             query = $"SELECT * FROM dbo.BenhNhan WHERE MaBenhNhan = {mabn}";
-            int result = _dataProvider.ExecuteNonQuery(query);
-            if (result <= 0)
+            DataTable result = _dataProvider.ExecuteQuery(query);
+            if (result.Rows.Count <= 0)
             {   
                 return -1;
             }
@@ -65,6 +65,18 @@ namespace QUANLYPHONGKHAM.SERVICE
             return true;
         }
 
+        public bool KiemTraBenhNhanTonTai(string hoten, int namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
+        {
+            query = $"SELECT * FROM dbo.BenhNhan WHERE " +
+                $"HoTen = N'{hoten}' AND NamSinh = {namsinh} AND GioiTinh = N'{gioitinh}' AND DienThoai = '{dienthoai}' AND DiaChi = N'{diachi}'";
+            DataTable result = _dataProvider.ExecuteQuery(query);
+            if (result.Rows.Count > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool ThemBenhNhan(string hoten, string snamsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
         {
             query = "SELECT MAX(MaBenhNhan) FROM dbo.BenhNhan";
@@ -75,8 +87,15 @@ namespace QUANLYPHONGKHAM.SERVICE
                 return false;
             }
             int namsinh = int.Parse(snamsinh);
+
+            if (KiemTraBenhNhanTonTai(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao))
+            {
+                thongbao = "Bệnh nhân này đã được đăng ký trong danh sách bệnh nhân!";
+                return false;
+            }
             
-            query = $"INSERT dbo.BenhNhan (MaBenhNhan, HoTen, NamSinh, GioiTinh, DienThoai, DiaChi) VALUES ({mabn} , N'{hoten}' , {namsinh} , N'{gioitinh}' , '{dienthoai}' , N'{diachi}')";
+            query = $"INSERT dbo.BenhNhan (MaBenhNhan, HoTen, NamSinh, GioiTinh, DienThoai, DiaChi) " +
+                $"VALUES ({mabn} , N'{hoten}' , {namsinh} , N'{gioitinh}' , '{dienthoai}' , N'{diachi}')";
             int result = _dataProvider.ExecuteNonQuery(query);
             if (result > 0)
             {
@@ -104,7 +123,8 @@ namespace QUANLYPHONGKHAM.SERVICE
             }
             int namsinh = int.Parse(snamsinh);
 
-            query = $"UPDATE dbo.BenhNhan SET HoTen = N'{hoten}', NamSinh = {namsinh}, GioiTinh = N'{gioitinh}', DienThoai = '{dienthoai}', DiaChi = N'{diachi}' WHERE MaBenhNhan = {mabn}";
+            query = $"UPDATE dbo.BenhNhan SET " +
+                $"HoTen = N'{hoten}', NamSinh = {namsinh}, GioiTinh = N'{gioitinh}', DienThoai = '{dienthoai}', DiaChi = N'{diachi}' WHERE MaBenhNhan = {mabn}";
             int result = _dataProvider.ExecuteNonQuery(query);
             if (result > 0)
             {

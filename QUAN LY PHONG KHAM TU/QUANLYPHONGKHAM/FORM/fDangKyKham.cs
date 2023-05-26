@@ -23,7 +23,7 @@ namespace QUANLYPHONGKHAM.FORM
         private string dienthoai { get { return tbDienThoai.Text.ToString(); } }
         private string diachi { get { return tbDiaChi.Text.ToString(); } }
         private string ngaykham { get { return tbNgay.Text.ToString(); } }
-        private string mbnkham { get { return lMabenhnhan.Text.ToString(); } }
+        private string mbnkham { get { return lMaBNKham.Text.ToString(); } }
         private string thongbao = string.Empty;
 
 
@@ -165,6 +165,13 @@ namespace QUANLYPHONGKHAM.FORM
         }
 
         //---------ĐĂNG KÝ KHÁM---------------------------
+        private void HeaderDanhSachKham()
+        {
+            dgvDanhSachKham.Columns[0].HeaderText = "Số thứ tự";
+            dgvDanhSachKham.Columns[1].HeaderText = "Mã bệnh nhân";
+            dgvDanhSachKham.Columns[2].HeaderText = "Họ tên";
+        }
+
         private void NgayDangKy()
         {
             tbNgay.Text = DateTime.Today.ToString("dd/MM/yyyy");
@@ -172,7 +179,8 @@ namespace QUANLYPHONGKHAM.FORM
 
         private void TaiDanhSachDangKyKham()
         {
-            dgvDanhSachKham.DataSource = _xuLyDangKyKham.TaiDanhSachDangKyKham();
+            dgvDanhSachKham.DataSource = _xuLyDangKyKham.TaiDanhSachDangKyKham(ngaykham);
+            HeaderDanhSachKham();
         }
 
         private void bDangKyKham_Click(object sender, EventArgs e)
@@ -182,7 +190,7 @@ namespace QUANLYPHONGKHAM.FORM
             if (dangkykham)
             {
                 MessageBox.Show(thongbao);
-                dgvDanhSachKham.DataSource = _xuLyDangKyKham.TaiDanhSachDangKyKham();
+                dgvDanhSachKham.DataSource = _xuLyDangKyKham.TaiDanhSachDangKyKham(ngaykham);
                 XoaInput();
             }
             else
@@ -199,7 +207,17 @@ namespace QUANLYPHONGKHAM.FORM
 
         private void bHuyKham_Click(object sender, EventArgs e)
         {
-            bool huykham = _xuLyDangKyKham.HuyKham(mabn, ngaykham, ref thongbao);
+            bool huykham = _xuLyDangKyKham.HuyKham(mbnkham, ngaykham, ref thongbao);
+            if (huykham)
+            {
+                MessageBox.Show(thongbao);
+                dgvDanhSachKham.DataSource = _xuLyDangKyKham.TaiDanhSachDangKyKham(ngaykham);
+                XoaInput();
+            }
+            else
+            {
+                MessageBox.Show(thongbao);
+            }
         }
     }
 }

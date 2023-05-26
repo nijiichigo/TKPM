@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[DonVi]
+(
+	[MaDonVi] VARCHAR(10) NOT NULL PRIMARY KEY, 
+    [TenDonVi] NVARCHAR(50) NOT NULL
+)

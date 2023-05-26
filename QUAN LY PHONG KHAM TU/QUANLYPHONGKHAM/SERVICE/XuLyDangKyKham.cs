@@ -15,20 +15,19 @@ namespace QUANLYPHONGKHAM.SERVICE
         private IXuLyChung _xuLyChung = new XuLyChung();
         private string query = string.Empty;
 
-        public DataTable TaiDanhSachDangKyKham()
+        public DataTable TaiDanhSachDangKyKham(string ngaykham)
         {
-            query = $"SELECT Ds.STT, Ds.MaBenhNhan, Bn.HoTen, Tt.TenTinhTrang " +
-                $"FROM dbo.DanhSachKham AS Ds JOIN dbo.BenhNhan AS Bn ON Ds.MaBenhNhan = Bn.MaBenhNhan " +
-                $"JOIN dbo.TinhTrang AS Tt ON Ds.MaTinhTrang = Tt.MaTinhTrang";
+            query = $"SELECT Ds.STT, Ds.MaBenhNhan, Bn.HoTen " +
+                $"FROM dbo.DanhSachKham AS Ds JOIN dbo.BenhNhan AS Bn ON Ds.MaBenhNhan = Bn.MaBenhNhan AND Ds.NgayKham = '{ngaykham}'";
             DataTable table1 = _dataProvider.ExecuteQuery(query);
             return table1;
         }
 
-        public bool DaDangKyKhamCungNgay(string ngaykham, int mabn)
+        public bool DaDangKyKham(string ngaykham, int mabn)
         {
             query = $"SELECT * FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn} AND NgayKham = '{ngaykham}'";
-            int result = _dataProvider.ExecuteNonQuery(query);
-            if (result <= 0)
+            DataTable result = _dataProvider.ExecuteQuery(query);
+            if (result.Rows.Count <= 0)
             {
                 return false;
             }
@@ -43,7 +42,7 @@ namespace QUANLYPHONGKHAM.SERVICE
                 return false;
             }
 
-            if(DaDangKyKhamCungNgay(ngaykham, mabn))
+            if(DaDangKyKham(ngaykham, mabn))
             {
                 thongbao = $"Bệnh nhân có mã bệnh nhân {mabn} đã đăng ký khám ngày {ngaykham}";
                 return false;
@@ -66,6 +65,56 @@ namespace QUANLYPHONGKHAM.SERVICE
             else
             {
                 thongbao = "Đăng ký khám không thành công!";
+                return false;
+            }
+        }
+
+        public void CapNhatSTT(string ngaykham, int mabn)
+        {
+            query = $"SELECT STT FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn} AND NgayKham = '{ngaykham}'";
+            object o_stt = _dataProvider.ExecuteScalar(query);
+            int stt = int.Parse(o_stt.ToString());
+
+            query = $"SELECT MAX(STT) FROM dbo.DanhSachKham WHERE NgayKham = '{ngaykham}'";
+            object o_max = _dataProvider.ExecuteScalar(query);
+            int max = int.Parse(o_max.ToString());
+
+            if (stt < max)
+            {
+                for (int i = stt;  i <= max; i++)
+                {
+                    query = $"UPDATE dbo.DanhSachKham SET STT = {i} WHERE NgayKham = '{ngaykham}' AND STT = {i+1}";
+                    _dataProvider.ExecuteNonQuery(query);
+                }
+            }
+        }
+
+
+        public bool HuyKham(string smabn, string ngaykham, ref string thongbao)
+        {
+            int mabn = _xuLyBenhNhan.TonTaiMaBenhNhan(smabn, ref thongbao);
+            if (mabn < 0)
+            {
+                return false;
+            }
+
+            if (!DaDangKyKham(ngaykham, mabn))
+            {
+                thongbao = $"Bệnh nhân có mã bệnh nhân {mabn} chưa đăng ký khám ngày {ngaykham}";
+                return false;
+            }
+
+            CapNhatSTT(ngaykham, mabn);
+            query = $"DELETE FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn} AND NgayKham = '{ngaykham}'";
+            int result = _dataProvider.ExecuteNonQuery(query);
+            if (result > 0)
+            {
+                thongbao = "Hủy đăng ký khám thành công!";
+                return true;
+            }
+            else
+            {
+                thongbao = "Hủy đăng ký khám không thành công!";
                 return false;
             }
         }

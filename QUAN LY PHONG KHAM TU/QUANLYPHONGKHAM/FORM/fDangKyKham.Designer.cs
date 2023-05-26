@@ -68,10 +68,10 @@ namespace QUANLYPHONGKHAM.FORM
             this.dgvDanhSachKham = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lMaBNKham = new System.Windows.Forms.Label();
             this.bHuyKham = new System.Windows.Forms.Button();
             this.lDanhSachKham = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.lMaBNKham = new System.Windows.Forms.Label();
             this.pTieuDe.SuspendLayout();
             this.pNut.SuspendLayout();
             this.pTimKiem.SuspendLayout();
@@ -465,6 +465,16 @@ namespace QUANLYPHONGKHAM.FORM
             this.panel2.Size = new System.Drawing.Size(497, 48);
             this.panel2.TabIndex = 16;
             // 
+            // lMaBNKham
+            // 
+            this.lMaBNKham.AutoSize = true;
+            this.lMaBNKham.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lMaBNKham.Location = new System.Drawing.Point(3, 32);
+            this.lMaBNKham.Name = "lMaBNKham";
+            this.lMaBNKham.Size = new System.Drawing.Size(35, 13);
+            this.lMaBNKham.TabIndex = 17;
+            this.lMaBNKham.Text = "label1";
+            // 
             // bHuyKham
             // 
             this.bHuyKham.Location = new System.Drawing.Point(391, 2);
@@ -495,16 +505,6 @@ namespace QUANLYPHONGKHAM.FORM
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(734, 682);
             this.panel8.TabIndex = 16;
-            // 
-            // lMaBNKham
-            // 
-            this.lMaBNKham.AutoSize = true;
-            this.lMaBNKham.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lMaBNKham.Location = new System.Drawing.Point(3, 32);
-            this.lMaBNKham.Name = "lMaBNKham";
-            this.lMaBNKham.Size = new System.Drawing.Size(35, 13);
-            this.lMaBNKham.TabIndex = 17;
-            this.lMaBNKham.Text = "label1";
             // 
             // fDangKyKham
             // 

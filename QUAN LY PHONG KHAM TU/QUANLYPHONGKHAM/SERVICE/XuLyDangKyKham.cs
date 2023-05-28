@@ -23,39 +23,38 @@ namespace QUANLYPHONGKHAM.SERVICE
             return table1;
         }
 
-        public bool DaDangKyKham(string ngaykham, int mabn)
+        public bool DaDangKyKham(string ngaykham, string mabn)
         {
             query = $"SELECT * FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn} AND NgayKham = '{ngaykham}'";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            if (result.Rows.Count <= 0)
+            if (_xuLyChung.KiemTraTonTai(query))
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
-        
-        public bool DangKyKham(string smabn, string ngaykham, ref string thongbao)
+
+        public bool DangKyKham(string mabn, string ngaykham, ref string thongbao)
         {
-            int mabn = _xuLyBenhNhan.TonTaiMaBenhNhan(smabn, ref thongbao);
-            if (mabn < 0)
+            if (!_xuLyBenhNhan.KiemTraTonTaiMaBenhNhan(mabn))
             {
+                thongbao = $"Mã bệnh nhân {mabn} không tồn tại!";
                 return false;
             }
 
-            if(DaDangKyKham(ngaykham, mabn))
+            if (DaDangKyKham(ngaykham, mabn))
             {
                 thongbao = $"Bệnh nhân có mã bệnh nhân {mabn} đã đăng ký khám ngày {ngaykham}";
                 return false;
             }
 
-            query = "SELECT MAX(MaDangKy) FROM dbo.DanhSachKham";
+            query = $"SELECT MAX(MaDangKy) FROM dbo.DanhSachKham";
             int madk = _xuLyChung.TaoSoThuTu(query);
 
             query = $"SELECT MAX(STT) FROM dbo.DanhSachKham WHERE NgayKham = '{ngaykham}'";
             int stt = _xuLyChung.TaoSoThuTu(query);
 
-            query = $"INSERT dbo.DanhSachKham (MaDangKy, NgayKham, STT, MaBenhNhan, MaPhieuKham, MaHoaDon, MaTinhTrang) " +
-                $"VALUES ({madk} , '{ngaykham}', {stt} , {mabn} , NULL , NULL , 'ChoKham')";
+            query = $"INSERT dbo.DanhSachKham (MaDangKy, NgayKham, STT, MaBenhNhan, MaPhieuKham, MaDonThuoc, MaHoaDon, MaTinhTrang) " +
+                $"VALUES ({madk} , '{ngaykham}', {stt} , {mabn} , NULL , NULL , NULL , 'ChoKham')";
             int result = _dataProvider.ExecuteNonQuery(query);
             if (result > 0)
             {
@@ -69,32 +68,29 @@ namespace QUANLYPHONGKHAM.SERVICE
             }
         }
 
-        public void CapNhatSTT(string ngaykham, int mabn)
+        public void CapNhatSTT(string ngaykham, string mabn)
         {
             query = $"SELECT STT FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn} AND NgayKham = '{ngaykham}'";
-            object o_stt = _dataProvider.ExecuteScalar(query);
-            int stt = int.Parse(o_stt.ToString());
+            int stt = _xuLyChung.TraMaSo(query);
 
             query = $"SELECT MAX(STT) FROM dbo.DanhSachKham WHERE NgayKham = '{ngaykham}'";
-            object o_max = _dataProvider.ExecuteScalar(query);
-            int max = int.Parse(o_max.ToString());
+            int max = _xuLyChung.TraMaSo(query);
 
             if (stt < max)
             {
-                for (int i = stt;  i <= max; i++)
+                for (int i = stt; i <= max; i++)
                 {
-                    query = $"UPDATE dbo.DanhSachKham SET STT = {i} WHERE NgayKham = '{ngaykham}' AND STT = {i+1}";
+                    query = $"UPDATE dbo.DanhSachKham SET STT = {i} WHERE NgayKham = '{ngaykham}' AND STT = {i + 1}";
                     _dataProvider.ExecuteNonQuery(query);
                 }
             }
         }
 
-
-        public bool HuyKham(string smabn, string ngaykham, ref string thongbao)
+        public bool HuyKham(string mabn, string ngaykham, ref string thongbao)
         {
-            int mabn = _xuLyBenhNhan.TonTaiMaBenhNhan(smabn, ref thongbao);
-            if (mabn < 0)
+            if (!_xuLyBenhNhan.KiemTraTonTaiMaBenhNhan(mabn))
             {
+                thongbao = $"Mã bệnh nhân {mabn} không tồn tại!";
                 return false;
             }
 

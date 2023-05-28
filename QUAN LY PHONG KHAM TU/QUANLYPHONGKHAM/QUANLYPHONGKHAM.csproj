@@ -82,6 +82,12 @@
     <Compile Include="FORM\fDangNhap.Designer.cs">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\fDanhMucThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fDanhMucThuoc.Designer.cs">
+      <DependentUpon>fDanhMucThuoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\fManHinhChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,14 +105,21 @@
     <Compile Include="SERVICE\IXuLyBenhNhan.cs" />
     <Compile Include="SERVICE\IXuLyChung.cs" />
     <Compile Include="SERVICE\IXuLyDangKyKham.cs" />
+    <Compile Include="SERVICE\IXuLyNhomThuoc.cs" />
+    <Compile Include="SERVICE\IXuLyThuoc.cs" />
     <Compile Include="SERVICE\XuLyBenhNhan.cs" />
     <Compile Include="SERVICE\XuLyChung.cs" />
     <Compile Include="SERVICE\XuLyDangKyKham.cs" />
+    <Compile Include="SERVICE\XuLyNhomThuoc.cs" />
+    <Compile Include="SERVICE\XuLyThuoc.cs" />
     <EmbeddedResource Include="FORM\fDangKyKham.resx">
       <DependentUpon>fDangKyKham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fDanhMucThuoc.resx">
+      <DependentUpon>fDanhMucThuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\fManHinhChinh.resx">
       <DependentUpon>fManHinhChinh.cs</DependentUpon>

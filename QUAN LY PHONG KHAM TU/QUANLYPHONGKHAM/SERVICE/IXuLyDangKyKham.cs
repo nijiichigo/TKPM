@@ -10,7 +10,7 @@ namespace QUANLYPHONGKHAM.SERVICE
     public interface IXuLyDangKyKham
     {
         DataTable TaiDanhSachDangKyKham(string ngaykham);
-        bool DangKyKham(string smabn, string ngaykham, ref string thongbao);
-        bool HuyKham(string smabn, string ngaykham, ref string thongbao);
+        bool DangKyKham(string mabn, string ngaykham, ref string thongbao);
+        bool HuyKham(string mabn, string ngaykham, ref string thongbao);
     }
 }

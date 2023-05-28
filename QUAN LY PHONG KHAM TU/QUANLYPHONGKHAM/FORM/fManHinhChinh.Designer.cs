@@ -39,6 +39,7 @@ namespace QUANLYPHONGKHAM.FORM
             this.thuNgânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hóaĐơnKhámToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xuấtPhiếuKhámToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,25 +64,26 @@ namespace QUANLYPHONGKHAM.FORM
             this.quảnLýTàiKhoảnToolStripMenuItem,
             this.thayĐổiQuyĐịnhToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.adminToolStripMenuItem.Text = "Quản lý";
             // 
             // quảnLýTàiKhoảnToolStripMenuItem
             // 
             this.quảnLýTàiKhoảnToolStripMenuItem.Name = "quảnLýTàiKhoảnToolStripMenuItem";
-            this.quảnLýTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.quảnLýTàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quảnLýTàiKhoảnToolStripMenuItem.Text = "Quản lý tài khoản";
             // 
             // thayĐổiQuyĐịnhToolStripMenuItem
             // 
             this.thayĐổiQuyĐịnhToolStripMenuItem.Name = "thayĐổiQuyĐịnhToolStripMenuItem";
-            this.thayĐổiQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.thayĐổiQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thayĐổiQuyĐịnhToolStripMenuItem.Text = "Thay đổi quy định";
             // 
             // phòngKhámToolStripMenuItem
             // 
             this.phòngKhámToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.đăngKýKhámToolStripMenuItem,
+            this.xuấtPhiếuKhámToolStripMenuItem,
             this.danhSáchThuốcToolStripMenuItem});
             this.phòngKhámToolStripMenuItem.Name = "phòngKhámToolStripMenuItem";
             this.phòngKhámToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
@@ -98,7 +100,8 @@ namespace QUANLYPHONGKHAM.FORM
             // 
             this.danhSáchThuốcToolStripMenuItem.Name = "danhSáchThuốcToolStripMenuItem";
             this.danhSáchThuốcToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.danhSáchThuốcToolStripMenuItem.Text = "Danh sách thuốc";
+            this.danhSáchThuốcToolStripMenuItem.Text = "Danh mục thuốc";
+            this.danhSáchThuốcToolStripMenuItem.Click += new System.EventHandler(this.danhSáchThuốcToolStripMenuItem_Click);
             // 
             // thuNgânToolStripMenuItem
             // 
@@ -111,7 +114,7 @@ namespace QUANLYPHONGKHAM.FORM
             // hóaĐơnKhámToolStripMenuItem
             // 
             this.hóaĐơnKhámToolStripMenuItem.Name = "hóaĐơnKhámToolStripMenuItem";
-            this.hóaĐơnKhámToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.hóaĐơnKhámToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hóaĐơnKhámToolStripMenuItem.Text = "Hóa đơn khám";
             // 
             // báoCáoToolStripMenuItem
@@ -119,6 +122,13 @@ namespace QUANLYPHONGKHAM.FORM
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
             this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo";
+            // 
+            // xuấtPhiếuKhámToolStripMenuItem
+            // 
+            this.xuấtPhiếuKhámToolStripMenuItem.Name = "xuấtPhiếuKhámToolStripMenuItem";
+            this.xuấtPhiếuKhámToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xuấtPhiếuKhámToolStripMenuItem.Text = "Xuất phiếu khám";
+            this.xuấtPhiếuKhámToolStripMenuItem.Click += new System.EventHandler(this.xuấtPhiếuKhámToolStripMenuItem_Click);
             // 
             // fManHinhChinh
             // 
@@ -150,5 +160,6 @@ namespace QUANLYPHONGKHAM.FORM
         private System.Windows.Forms.ToolStripMenuItem thuNgânToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hóaĐơnKhámToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem báoCáoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xuấtPhiếuKhámToolStripMenuItem;
     }
 }

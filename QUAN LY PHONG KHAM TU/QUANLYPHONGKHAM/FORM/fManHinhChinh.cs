@@ -29,5 +29,21 @@ namespace QUANLYPHONGKHAM.FORM
         {
             Application.Exit();
         }
+
+        private void danhSáchThuốcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fDanhMucThuoc f = new fDanhMucThuoc();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
+
+        private void xuấtPhiếuKhámToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fPhieuKham f = new fPhieuKham();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
+        }
     }
 }

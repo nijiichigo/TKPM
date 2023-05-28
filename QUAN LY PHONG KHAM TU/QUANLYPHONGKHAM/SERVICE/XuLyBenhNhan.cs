@@ -21,30 +21,16 @@ namespace QUANLYPHONGKHAM.SERVICE
             return result;
         }
 
-        public int TonTaiMaBenhNhan(string smabn, ref string thongbao)
+        public bool KiemTraThongTin(string hoten, string namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
         {
-            int mabn;
-            if (!(int.TryParse(smabn, out mabn)))
+            if ((hoten == "") || (namsinh == "") || (gioitinh == "") || (dienthoai == "") || (diachi == ""))
             {
-                thongbao = "Mã bệnh nhân không hợp lệ!";
-                return -1;
+                thongbao = "Vui lòng điền đầy đủ thông tin!";
+                return false;
             }
-            mabn = int.Parse(smabn);
 
-            query = $"SELECT * FROM dbo.BenhNhan WHERE MaBenhNhan = {mabn}";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            if (result.Rows.Count <= 0)
-            {   
-                return -1;
-            }
-            return mabn;
-        }
-
-        public bool KiemTraThongTin(string hoten, string snamsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
-        {
-            int num;
-            if (int.TryParse(snamsinh, out num))
-            {                
+            if (int.TryParse(namsinh, out int num))
+            {
                 if ((num > DateTime.Now.Year) || (num <= 1900))
                 {
                     thongbao = "Năm sinh không hợp lệ!";
@@ -56,44 +42,59 @@ namespace QUANLYPHONGKHAM.SERVICE
                 thongbao = "Năm sinh không hợp lệ!";
                 return false;
             }
-
-            if ((hoten == "") || (snamsinh == "") || (gioitinh == "") || (dienthoai == "") || (diachi == ""))
-            {
-                thongbao = "Vui lòng điền đầy đủ thông tin!";
-                return false;
-            }
             return true;
         }
 
-        public bool KiemTraBenhNhanTonTai(string hoten, int namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
+        public bool KiemTraTonTaiMaBenhNhan(string mabn)
+        {
+            if (_xuLyChung.StringToInt(mabn) >= 0)
+            {
+                query = $"SELECT * FROM dbo.BenhNhan WHERE MaBenhNhan = {mabn}";
+                if (_xuLyChung.KiemTraTonTai(query))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool KiemTraTonTaiBenhNhan(string hoten, string namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
         {
             query = $"SELECT * FROM dbo.BenhNhan WHERE " +
                 $"HoTen = N'{hoten}' AND NamSinh = {namsinh} AND GioiTinh = N'{gioitinh}' AND DienThoai = '{dienthoai}' AND DiaChi = N'{diachi}'";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            if (result.Rows.Count > 0)
+            if (_xuLyChung.KiemTraTonTai(query))
             {
                 return true;
             }
             return false;
         }
 
-        public bool ThemBenhNhan(string hoten, string snamsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
+        public bool KiemTraBenhNhanTungDangKyKham(string mabn)
         {
-            query = "SELECT MAX(MaBenhNhan) FROM dbo.BenhNhan";
+            query = $"SELECT * FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn}";
+            if (_xuLyChung.KiemTraTonTai(query))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ThemBenhNhan(string hoten, string namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
+        {
+            query = $"SELECT MAX(MaBenhNhan) FROM dbo.BenhNhan";
             int mabn = _xuLyChung.TaoSoThuTu(query);
 
-            if (!KiemTraThongTin(hoten, snamsinh, gioitinh, dienthoai, diachi, ref thongbao))
+            if (!KiemTraThongTin(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao))
             {
                 return false;
             }
-            int namsinh = int.Parse(snamsinh);
 
-            if (KiemTraBenhNhanTonTai(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao))
+            if (KiemTraTonTaiBenhNhan(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao))
             {
                 thongbao = "Bệnh nhân này đã được đăng ký trong danh sách bệnh nhân!";
                 return false;
             }
-            
+
             query = $"INSERT dbo.BenhNhan (MaBenhNhan, HoTen, NamSinh, GioiTinh, DienThoai, DiaChi) " +
                 $"VALUES ({mabn} , N'{hoten}' , {namsinh} , N'{gioitinh}' , '{dienthoai}' , N'{diachi}')";
             int result = _dataProvider.ExecuteNonQuery(query);
@@ -109,40 +110,17 @@ namespace QUANLYPHONGKHAM.SERVICE
             }
         }
 
-        public bool DieuChinhBenhNhan(string smabn, string hoten, string snamsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
+        public bool XoaBenhNhan(string mabn, ref string thongbao)
         {
-            int mabn = TonTaiMaBenhNhan(smabn, ref thongbao);
-            if (mabn < 0)
-            {                
+            if (!KiemTraTonTaiMaBenhNhan(mabn))
+            {
+                thongbao = $"Mã bệnh nhân {mabn} không tồn tại!";
                 return false;
             }
 
-            if (!KiemTraThongTin(hoten, snamsinh, gioitinh, dienthoai, diachi, ref thongbao))
+            if (KiemTraBenhNhanTungDangKyKham(mabn))
             {
-                return false;
-            }
-            int namsinh = int.Parse(snamsinh);
-
-            query = $"UPDATE dbo.BenhNhan SET " +
-                $"HoTen = N'{hoten}', NamSinh = {namsinh}, GioiTinh = N'{gioitinh}', DienThoai = '{dienthoai}', DiaChi = N'{diachi}' WHERE MaBenhNhan = {mabn}";
-            int result = _dataProvider.ExecuteNonQuery(query);
-            if (result > 0)
-            {
-                thongbao = "Cập nhật thông tin bệnh nhân thành công!";
-                return true;
-            }
-            else
-            {
-                thongbao = "Cập nhật thông tin bệnh nhân không thành công!";
-                return false;
-            }
-        }
-
-        public bool XoaBenhNhan(string smabn, ref string thongbao)
-        {
-            int mabn = TonTaiMaBenhNhan(smabn, ref thongbao);
-            if (mabn < 0)
-            {
+                thongbao = $"Bệnh nhân có mã {mabn} đã từng đăng ký khám. Không được xóa bệnh nhân!";
                 return false;
             }
 
@@ -160,9 +138,54 @@ namespace QUANLYPHONGKHAM.SERVICE
             }
         }
 
+        public bool DieuChinhBenhNhan(string mabn, string hoten, string namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
+        {
+            if (!KiemTraTonTaiMaBenhNhan(mabn))
+            {
+                thongbao = $"Mã bệnh nhân {mabn} không tồn tại!";
+                return false;
+            }
+
+            if (!KiemTraThongTin(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao))
+            {
+                return false;
+            }
+
+            query = $"UPDATE dbo.BenhNhan SET " +
+                $"HoTen = N'{hoten}', NamSinh = {namsinh}, GioiTinh = N'{gioitinh}', DienThoai = '{dienthoai}', DiaChi = N'{diachi}' WHERE MaBenhNhan = {mabn}";
+            int result = _dataProvider.ExecuteNonQuery(query);
+            if (result > 0)
+            {
+                thongbao = "Cập nhật thông tin bệnh nhân thành công!";
+                return true;
+            }
+            else
+            {
+                thongbao = "Cập nhật thông tin bệnh nhân không thành công!";
+                return false;
+            }
+        }
+
         public DataTable TimKiemBenhNhan(string tukhoa, string loai)
         {
             DataTable result = new DataTable();
+            if (loai == "Họ tên")
+            {
+                loai = "HoTen";
+            }
+            else if (loai == "Năm sinh")
+            {
+                loai = "NamSinh";
+            }
+            else if (loai == "Điện thoại")
+            {
+                loai = "DienThoai";
+            }
+            else if (loai == "Mã bệnh nhân")
+            {
+                loai = "MaBenhNhan";
+            }
+
             if ((loai == "HoTen") || (loai == "DienThoai"))
             {
                 query = $"SELECT * FROM dbo.BenhNhan WHERE {loai} LIKE N'%{tukhoa}%'";

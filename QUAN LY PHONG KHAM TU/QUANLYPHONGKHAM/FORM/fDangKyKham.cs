@@ -24,15 +24,18 @@ namespace QUANLYPHONGKHAM.FORM
         private string diachi { get { return tbDiaChi.Text.ToString(); } }
         private string ngaykham { get { return tbNgay.Text.ToString(); } }
         private string mbnkham { get { return lMaBNKham.Text.ToString(); } }
+        private string loai { get { return cbLoai.Text.ToString(); } }
+        private string tukhoa { get { return tbTuKhoa.Text.ToString(); } }
         private string thongbao = string.Empty;
-
 
         public fDangKyKham()
         {
             InitializeComponent();
-            TaiDanhSachBenhNhan();
             NgayDangKy();
+            TaiDanhSachBenhNhan();
             TaiDanhSachDangKyKham();
+            HeaderDanhSachBenhNhan();
+            HeaderDanhSachKham();
         }
 
         private void XoaInput()
@@ -43,9 +46,11 @@ namespace QUANLYPHONGKHAM.FORM
             cbbGioiTinh.SelectedIndex = -1;
             tbDiaChi.Clear();
             tbDienThoai.Clear();
+            cbLoai.SelectedIndex = -1;
+            tbTuKhoa.Clear();
         }
 
-        //-------------BỆNH NHÂN--------------------
+        //------------BỆNH NHÂN----------------
         private void HeaderDanhSachBenhNhan()
         {
             dgvDanhSachBenhNhan.Columns[0].HeaderText = "Mã bệnh nhân";
@@ -57,9 +62,8 @@ namespace QUANLYPHONGKHAM.FORM
         }
 
         private void TaiDanhSachBenhNhan()
-        {            
+        {
             dgvDanhSachBenhNhan.DataSource = _xuLyBenhNhan.TaiDanhSachBenhNhan();
-            HeaderDanhSachBenhNhan();
         }
 
         private void dgvDanhSachBenhNhan_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -73,25 +77,19 @@ namespace QUANLYPHONGKHAM.FORM
             tbDiaChi.Text = dgvDanhSachBenhNhan.Rows[i].Cells[5].Value.ToString();
         }
 
-        private void bThem_Click(object sender, EventArgs e)
+        private void bXoaForm_Click(object sender, EventArgs e)
         {
-            bool thembenhnhan = _xuLyBenhNhan.ThemBenhNhan(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao);
-
-            if (thembenhnhan)
-            {
-                MessageBox.Show(thongbao);
-                dgvDanhSachBenhNhan.DataSource = _xuLyBenhNhan.TaiDanhSachBenhNhan();
-                XoaInput();
-            }
-            else
-            {
-                MessageBox.Show(thongbao);
-            }
+            XoaInput();
         }
 
-        private void bDieuChinh_Click(object sender, EventArgs e)
+        private void bReloadDanhSach_Click(object sender, EventArgs e)
         {
-            bool thembenhnhan = _xuLyBenhNhan.DieuChinhBenhNhan(mabn, hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao);
+            TaiDanhSachBenhNhan();
+        }
+
+        private void bDangKyBN_Click(object sender, EventArgs e)
+        {
+            bool thembenhnhan = _xuLyBenhNhan.ThemBenhNhan(hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao);
 
             if (thembenhnhan)
             {
@@ -123,48 +121,36 @@ namespace QUANLYPHONGKHAM.FORM
             }
         }
 
+        private void bDieuChinh_Click(object sender, EventArgs e)
+        {
+            bool dieuchinhbenhnhan = _xuLyBenhNhan.DieuChinhBenhNhan(mabn, hoten, namsinh, gioitinh, dienthoai, diachi, ref thongbao);
+
+            if (dieuchinhbenhnhan)
+            {
+                MessageBox.Show(thongbao);
+                dgvDanhSachBenhNhan.DataSource = _xuLyBenhNhan.TaiDanhSachBenhNhan();
+                XoaInput();
+            }
+            else
+            {
+                MessageBox.Show(thongbao);
+            }
+        }
+
         private void bTimKiem_Click(object sender, EventArgs e)
         {
-            string loai = string.Empty;
-            string tukhoa = string.Empty;
-            if (rbMaBN.Checked)
-            {
-                loai = "MaBenhNhan";
-                tukhoa = mabn;
-            }
-            else if (rbHoTenBN.Checked)
-            {
-                loai = "HoTen";
-                tukhoa = hoten;
-            }
-            else if (rbNamSinh.Checked)
-            {
-                loai = "NamSinh";
-                tukhoa = namsinh;
-            }
-            else if (rbDienThoai.Checked)
-            {
-                loai = "DienThoai";
-                tukhoa = dienthoai;
-            }
             if ((tukhoa == "") || (loai == ""))
             {
-                MessageBox.Show("Vui lòng nhập từ khóa và loại tìm kiếm!");
+                MessageBox.Show("Vui lòng nhập từ khóa và loại tra cứu!");
             }
             else
             {
                 DataTable timkiem = _xuLyBenhNhan.TimKiemBenhNhan(tukhoa, loai);
                 dgvDanhSachBenhNhan.DataSource = timkiem;
-                HeaderDanhSachBenhNhan();
-            }    
+            }
         }
 
-        private void bReloadDanhSach_Click(object sender, EventArgs e)
-        {
-            TaiDanhSachBenhNhan();
-        }
-
-        //---------ĐĂNG KÝ KHÁM---------------------------
+        //------------ĐĂNG KÝ KHÁM---------------
         private void HeaderDanhSachKham()
         {
             dgvDanhSachKham.Columns[0].HeaderText = "Số thứ tự";
@@ -180,7 +166,12 @@ namespace QUANLYPHONGKHAM.FORM
         private void TaiDanhSachDangKyKham()
         {
             dgvDanhSachKham.DataSource = _xuLyDangKyKham.TaiDanhSachDangKyKham(ngaykham);
-            HeaderDanhSachKham();
+        }
+
+        private void dgvDanhSachKham_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = dgvDanhSachKham.CurrentRow.Index;
+            lMaBNKham.Text = dgvDanhSachKham.Rows[i].Cells[1].Value.ToString();
         }
 
         private void bDangKyKham_Click(object sender, EventArgs e)
@@ -197,12 +188,6 @@ namespace QUANLYPHONGKHAM.FORM
             {
                 MessageBox.Show(thongbao);
             }
-        }
-
-        private void dgvDanhSachKham_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int i = dgvDanhSachKham.CurrentRow.Index;
-            lMaBNKham.Text = dgvDanhSachKham.Rows[i].Cells[1].Value.ToString();
         }
 
         private void bHuyKham_Click(object sender, EventArgs e)

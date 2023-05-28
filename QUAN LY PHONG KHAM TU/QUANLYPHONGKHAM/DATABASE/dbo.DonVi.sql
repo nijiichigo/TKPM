@@ -1,5 +1,6 @@
-﻿CREATE TABLE [dbo].[DonVi]
-(
-	[MaDonVi] VARCHAR(10) NOT NULL PRIMARY KEY, 
-    [TenDonVi] NVARCHAR(50) NOT NULL
-)
+﻿CREATE TABLE [dbo].[DonVi] (
+    [MaDonVi]  INT  NOT NULL,
+    [TenDonVi] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([MaDonVi] ASC)
+);
+

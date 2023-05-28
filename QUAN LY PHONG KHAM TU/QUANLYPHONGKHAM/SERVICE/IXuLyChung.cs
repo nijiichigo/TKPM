@@ -8,6 +8,9 @@ namespace QUANLYPHONGKHAM.SERVICE
 {
     public interface IXuLyChung
     {
+        int TraMaSo(string query);
         int TaoSoThuTu(string query);
+        bool KiemTraTonTai(string query);
+        int StringToInt(string s);
     }
 }

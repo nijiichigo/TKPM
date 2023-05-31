@@ -50,10 +50,7 @@ namespace QUANLYPHONGKHAM.SERVICE
             if (_xuLyChung.StringToInt(mabn) >= 0)
             {
                 query = $"SELECT * FROM dbo.BenhNhan WHERE MaBenhNhan = {mabn}";
-                if (_xuLyChung.KiemTraTonTai(query))
-                {
-                    return true;
-                }
+                return _xuLyChung.KiemTraTonTai(query);
             }
             return false;
         }
@@ -62,21 +59,13 @@ namespace QUANLYPHONGKHAM.SERVICE
         {
             query = $"SELECT * FROM dbo.BenhNhan WHERE " +
                 $"HoTen = N'{hoten}' AND NamSinh = {namsinh} AND GioiTinh = N'{gioitinh}' AND DienThoai = '{dienthoai}' AND DiaChi = N'{diachi}'";
-            if (_xuLyChung.KiemTraTonTai(query))
-            {
-                return true;
-            }
-            return false;
+            return _xuLyChung.KiemTraTonTai(query);
         }
 
         public bool KiemTraBenhNhanTungDangKyKham(string mabn)
         {
             query = $"SELECT * FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn}";
-            if (_xuLyChung.KiemTraTonTai(query))
-            {
-                return true;
-            }
-            return false;
+            return _xuLyChung.KiemTraTonTai(query);
         }
 
         public bool ThemBenhNhan(string hoten, string namsinh, string gioitinh, string dienthoai, string diachi, ref string thongbao)
@@ -168,7 +157,6 @@ namespace QUANLYPHONGKHAM.SERVICE
 
         public DataTable TimKiemBenhNhan(string tukhoa, string loai)
         {
-            DataTable result = new DataTable();
             if (loai == "Họ tên")
             {
                 loai = "HoTen";
@@ -202,8 +190,7 @@ namespace QUANLYPHONGKHAM.SERVICE
                     query = "SELECT * FROM dbo.BenhNhan";
                 }
             }
-            result = _dataProvider.ExecuteQuery(query);
-            return result;
+            return _dataProvider.ExecuteQuery(query);
         }
     }
 }

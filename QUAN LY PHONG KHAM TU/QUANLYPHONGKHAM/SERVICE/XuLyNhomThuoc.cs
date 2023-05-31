@@ -17,8 +17,7 @@ namespace QUANLYPHONGKHAM.SERVICE
         public DataTable TaiDanhSachNhomThuoc()
         {
             query = $"SELECT * FROM dbo.NhomThuoc";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            return result;
+            return _dataProvider.ExecuteQuery(query);
         }
 
         public bool KiemTraTonTaiMaNhomThuoc(string manhom)
@@ -26,10 +25,7 @@ namespace QUANLYPHONGKHAM.SERVICE
             if (_xuLyChung.StringToInt(manhom) >= 0)
             {
                 query = $"SELECT * FROM dbo.NhomThuoc WHERE MaNhom = {manhom}";
-                if (_xuLyChung.KiemTraTonTai(query))
-                {
-                    return true;
-                }
+                return _xuLyChung.KiemTraTonTai(query);
             }    
             return false;
         }
@@ -47,11 +43,7 @@ namespace QUANLYPHONGKHAM.SERVICE
         public bool KiemTraNhomThuocCoThuoc(string manhom)
         {
             query = $"SELECT * FROM dbo.Thuoc WHERE MaNhom = {manhom}";
-            if (_xuLyChung.KiemTraTonTai(query))
-            {
-                return true;
-            }
-            return false;
+            return _xuLyChung.KiemTraTonTai(query);
         }
 
         public bool ThemNhomThuoc(string tennhom, ref string thongbao)

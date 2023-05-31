@@ -10,6 +10,7 @@ namespace QUANLYPHONGKHAM.SERVICE
     {
         int TraMaSo(string query);
         int TaoSoThuTu(string query);
+        string LayChuoi(string query);
         bool KiemTraTonTai(string query);
         int StringToInt(string s);
     }

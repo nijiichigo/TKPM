@@ -31,10 +31,10 @@ namespace QUANLYPHONGKHAM
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txbTenDangNhap = new System.Windows.Forms.TextBox();
+            this.tbTenDangNhap = new System.Windows.Forms.TextBox();
             this.lTenDangNhap = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txbMatKhau = new System.Windows.Forms.TextBox();
+            this.tbMatKhau = new System.Windows.Forms.TextBox();
             this.lMatKhau = new System.Windows.Forms.Label();
             this.bDangNhap = new System.Windows.Forms.Button();
             this.lTieude = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@ namespace QUANLYPHONGKHAM
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.bDangNhap);
-            this.panel3.Location = new System.Drawing.Point(27, 64);
+            this.panel3.Location = new System.Drawing.Point(31, 46);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(458, 132);
@@ -56,7 +56,7 @@ namespace QUANLYPHONGKHAM
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txbTenDangNhap);
+            this.panel1.Controls.Add(this.tbTenDangNhap);
             this.panel1.Controls.Add(this.lTenDangNhap);
             this.panel1.Location = new System.Drawing.Point(8, 11);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -64,13 +64,13 @@ namespace QUANLYPHONGKHAM
             this.panel1.Size = new System.Drawing.Size(448, 28);
             this.panel1.TabIndex = 1;
             // 
-            // txbTenDangNhap
+            // tbTenDangNhap
             // 
-            this.txbTenDangNhap.Location = new System.Drawing.Point(156, 4);
-            this.txbTenDangNhap.Margin = new System.Windows.Forms.Padding(2);
-            this.txbTenDangNhap.Name = "txbTenDangNhap";
-            this.txbTenDangNhap.Size = new System.Drawing.Size(279, 20);
-            this.txbTenDangNhap.TabIndex = 0;
+            this.tbTenDangNhap.Location = new System.Drawing.Point(156, 4);
+            this.tbTenDangNhap.Margin = new System.Windows.Forms.Padding(2);
+            this.tbTenDangNhap.Name = "tbTenDangNhap";
+            this.tbTenDangNhap.Size = new System.Drawing.Size(279, 20);
+            this.tbTenDangNhap.TabIndex = 0;
             // 
             // lTenDangNhap
             // 
@@ -85,7 +85,7 @@ namespace QUANLYPHONGKHAM
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txbMatKhau);
+            this.panel2.Controls.Add(this.tbMatKhau);
             this.panel2.Controls.Add(this.lMatKhau);
             this.panel2.Location = new System.Drawing.Point(8, 44);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
@@ -93,14 +93,14 @@ namespace QUANLYPHONGKHAM
             this.panel2.Size = new System.Drawing.Size(448, 28);
             this.panel2.TabIndex = 4;
             // 
-            // txbMatKhau
+            // tbMatKhau
             // 
-            this.txbMatKhau.Location = new System.Drawing.Point(156, 4);
-            this.txbMatKhau.Margin = new System.Windows.Forms.Padding(2);
-            this.txbMatKhau.Name = "txbMatKhau";
-            this.txbMatKhau.Size = new System.Drawing.Size(279, 20);
-            this.txbMatKhau.TabIndex = 1;
-            this.txbMatKhau.UseSystemPasswordChar = true;
+            this.tbMatKhau.Location = new System.Drawing.Point(156, 4);
+            this.tbMatKhau.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMatKhau.Name = "tbMatKhau";
+            this.tbMatKhau.Size = new System.Drawing.Size(279, 20);
+            this.tbMatKhau.TabIndex = 1;
+            this.tbMatKhau.UseSystemPasswordChar = true;
             // 
             // lMatKhau
             // 
@@ -129,7 +129,7 @@ namespace QUANLYPHONGKHAM
             // 
             this.lTieude.AutoSize = true;
             this.lTieude.Font = new System.Drawing.Font("Microsoft Sans Serif", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lTieude.Location = new System.Drawing.Point(170, 20);
+            this.lTieude.Location = new System.Drawing.Point(169, 9);
             this.lTieude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lTieude.Name = "lTieude";
             this.lTieude.Size = new System.Drawing.Size(173, 35);
@@ -140,7 +140,7 @@ namespace QUANLYPHONGKHAM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 207);
+            this.ClientSize = new System.Drawing.Size(523, 181);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lTieude);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -162,10 +162,10 @@ namespace QUANLYPHONGKHAM
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txbTenDangNhap;
+        private System.Windows.Forms.TextBox tbTenDangNhap;
         private System.Windows.Forms.Label lTenDangNhap;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txbMatKhau;
+        private System.Windows.Forms.TextBox tbMatKhau;
         private System.Windows.Forms.Label lMatKhau;
         private System.Windows.Forms.Button bDangNhap;
         private System.Windows.Forms.Label lTieude;

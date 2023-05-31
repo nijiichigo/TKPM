@@ -699,8 +699,9 @@ namespace QUANLYPHONGKHAM.FORM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 681);
+            this.ClientSize = new System.Drawing.Size(674, 681);
             this.Controls.Add(this.tcDanhMucThuoc);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "fDanhMucThuoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh mục thuốc";

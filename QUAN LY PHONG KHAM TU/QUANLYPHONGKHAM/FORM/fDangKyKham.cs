@@ -204,5 +204,52 @@ namespace QUANLYPHONGKHAM.FORM
                 MessageBox.Show(thongbao);
             }
         }
+
+        //----------STYLE----------------------
+        private void tcDanhSachBN_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabControl tabControl = (TabControl)sender;
+            TabPage tabPage = tabControl.TabPages[e.Index];
+            Graphics g = e.Graphics;
+
+            Font tabFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+            Color tabColor = Color.LightSteelBlue;
+            Color textColor = Color.Black; 
+
+            Rectangle tabRect = tabControl.GetTabRect(e.Index);
+            using (SolidBrush brush = new SolidBrush(tabColor))
+            {
+                g.FillRectangle(brush, tabRect);
+            }
+
+            string tabText = tabControl.TabPages[e.Index].Text;
+            using (SolidBrush brush = new SolidBrush(textColor))
+            {
+                g.DrawString(tabText, tabFont, brush, tabRect.Left + 1, tabRect.Top + 1);
+            }
+        }
+
+        private void tcDangKyKham_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabControl tabControl = (TabControl)sender;
+            TabPage tabPage = tabControl.TabPages[e.Index];
+            Graphics g = e.Graphics;
+
+            Font tabFont = new Font("Microsoft Sans Serif", 8, FontStyle.Bold);
+            Color tabColor = Color.LightSteelBlue;
+            Color textColor = Color.Black;
+
+            Rectangle tabRect = tabControl.GetTabRect(e.Index);
+            using (SolidBrush brush = new SolidBrush(tabColor))
+            {
+                g.FillRectangle(brush, tabRect);
+            }
+
+            string tabText = tabControl.TabPages[e.Index].Text;
+            using (SolidBrush brush = new SolidBrush(textColor))
+            {
+                g.DrawString(tabText, tabFont, brush, tabRect.Left + 1, tabRect.Top + 1);
+            }
+        }
     }
 }

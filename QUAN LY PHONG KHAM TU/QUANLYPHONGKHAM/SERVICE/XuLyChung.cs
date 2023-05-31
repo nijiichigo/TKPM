@@ -32,6 +32,11 @@ namespace QUANLYPHONGKHAM.SERVICE
             return 1;
         }
 
+        public string LayChuoi(string query)
+        {
+            return _dataProvider.ExecuteScalar(query).ToString();
+        }
+
         public bool KiemTraTonTai(string query)
         {
             DataTable result = _dataProvider.ExecuteQuery(query);

@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QUANLYPHONGKHAM.SERVICE;
+using QUANLYPHONGKHAM.DAL;
 using QUANLYPHONGKHAM.FORM;
 
 namespace QUANLYPHONGKHAM
 {
     public partial class fDangNhap : Form
     {
+        private IXuLyTaiKhoan _xuLyTaiKhoan = new XuLyTaiKhoan();
         public fDangNhap()
         {
             InitializeComponent();
@@ -20,10 +23,19 @@ namespace QUANLYPHONGKHAM
 
         private void bDangNhap_Click(object sender, EventArgs e)
         {
-            fManHinhChinh f = new fManHinhChinh();
-            this.Hide();
-            f.ShowDialog();
-            this.Show();
+            string tendangnhap = tbTenDangNhap.Text;
+            string matkhau = tbMatKhau.Text;
+            if (_xuLyTaiKhoan.DangNhap(tendangnhap, matkhau))
+            {
+                fManHinhChinh f = new fManHinhChinh(tendangnhap);
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Thông tin đăng nhập không chính xác!");
+            }
         }
 
         private void fDangNhap_FormClosing(object sender, FormClosingEventArgs e)

@@ -70,6 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ENTITIES\TaiKhoan.cs" />
     <Compile Include="FORM\fDangKyKham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,11 +89,41 @@
     <Compile Include="FORM\fDanhMucThuoc.Designer.cs">
       <DependentUpon>fDanhMucThuoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="FORM\fDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fDoiMatKhau.Designer.cs">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </Compile>
     <Compile Include="FORM\fManHinhChinh.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORM\fManHinhChinh.Designer.cs">
       <DependentUpon>fManHinhChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fMatKhauMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fMatKhauMoi.Designer.cs">
+      <DependentUpon>fMatKhauMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fPhieuKham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fPhieuKham.Designer.cs">
+      <DependentUpon>fPhieuKham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fTaiKhoan.Designer.cs">
+      <DependentUpon>fTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\temp.cs">
       <SubType>Form</SubType>
@@ -106,11 +137,15 @@
     <Compile Include="SERVICE\IXuLyChung.cs" />
     <Compile Include="SERVICE\IXuLyDangKyKham.cs" />
     <Compile Include="SERVICE\IXuLyNhomThuoc.cs" />
+    <Compile Include="SERVICE\IXuLyPhieuKham.cs" />
+    <Compile Include="SERVICE\IXuLyTaiKhoan.cs" />
     <Compile Include="SERVICE\IXuLyThuoc.cs" />
     <Compile Include="SERVICE\XuLyBenhNhan.cs" />
     <Compile Include="SERVICE\XuLyChung.cs" />
     <Compile Include="SERVICE\XuLyDangKyKham.cs" />
     <Compile Include="SERVICE\XuLyNhomThuoc.cs" />
+    <Compile Include="SERVICE\XuLyPhieuKham.cs" />
+    <Compile Include="SERVICE\XuLyTaiKhoan.cs" />
     <Compile Include="SERVICE\XuLyThuoc.cs" />
     <EmbeddedResource Include="FORM\fDangKyKham.resx">
       <DependentUpon>fDangKyKham.cs</DependentUpon>
@@ -121,8 +156,23 @@
     <EmbeddedResource Include="FORM\fDanhMucThuoc.resx">
       <DependentUpon>fDanhMucThuoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fDoiMatKhau.resx">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORM\fManHinhChinh.resx">
       <DependentUpon>fManHinhChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fMatKhauMoi.resx">
+      <DependentUpon>fMatKhauMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fPhieuKham.resx">
+      <DependentUpon>fPhieuKham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fTaiKhoan.resx">
+      <DependentUpon>fTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\temp.resx">
       <DependentUpon>temp.cs</DependentUpon>

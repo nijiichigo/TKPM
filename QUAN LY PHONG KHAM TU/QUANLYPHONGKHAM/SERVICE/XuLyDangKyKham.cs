@@ -19,18 +19,13 @@ namespace QUANLYPHONGKHAM.SERVICE
         {
             query = $"SELECT Ds.STT, Ds.MaBenhNhan, Bn.HoTen " +
                 $"FROM dbo.DanhSachKham AS Ds JOIN dbo.BenhNhan AS Bn ON Ds.MaBenhNhan = Bn.MaBenhNhan AND Ds.NgayKham = '{ngaykham}'";
-            DataTable table1 = _dataProvider.ExecuteQuery(query);
-            return table1;
+            return _dataProvider.ExecuteQuery(query);
         }
 
         public bool DaDangKyKham(string ngaykham, string mabn)
         {
             query = $"SELECT * FROM dbo.DanhSachKham WHERE MaBenhNhan = {mabn} AND NgayKham = '{ngaykham}'";
-            if (_xuLyChung.KiemTraTonTai(query))
-            {
-                return true;
-            }
-            return false;
+            return _xuLyChung.KiemTraTonTai(query);
         }
 
         public bool DangKyKham(string mabn, string ngaykham, ref string thongbao)
@@ -54,7 +49,7 @@ namespace QUANLYPHONGKHAM.SERVICE
             int stt = _xuLyChung.TaoSoThuTu(query);
 
             query = $"INSERT dbo.DanhSachKham (MaDangKy, NgayKham, STT, MaBenhNhan, MaPhieuKham, MaDonThuoc, MaHoaDon, MaTinhTrang) " +
-                $"VALUES ({madk} , '{ngaykham}', {stt} , {mabn} , NULL , NULL , NULL , 'ChoKham')";
+                $"VALUES ({madk} , '{ngaykham}', {stt} , {mabn} , {madk} , {madk} , {madk} , 'ChoKham')";
             int result = _dataProvider.ExecuteNonQuery(query);
             if (result > 0)
             {

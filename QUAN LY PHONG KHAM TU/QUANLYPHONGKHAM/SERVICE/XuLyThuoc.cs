@@ -20,22 +20,19 @@ namespace QUANLYPHONGKHAM.SERVICE
             query = $"SELECT T.MaThuoc, T.TenThuoc, Nt.TenNhom, Dv.TenDonVi, T.DonGia " +
                 $"FROM dbo.NhomThuoc AS Nt JOIN dbo.Thuoc AS T ON T.MaNhom = Nt.MaNhom " +
                 $"JOIN dbo.DonVi AS Dv ON T.MaDonVi = Dv.MaDonVi";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            return result;
+            return _dataProvider.ExecuteQuery(query);
         }
 
         public DataTable LietKeNhomThuoc()
         {
             query = $"SELECT TenNhom FROM dbo.NhomThuoc";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            return result;
+            return _dataProvider.ExecuteQuery(query);
         }
 
         public DataTable LietKeDonVi()
         {
             query = $"SELECT TenDonVi FROM dbo.DonVi";
-            DataTable result = _dataProvider.ExecuteQuery(query);
-            return result;
+            return _dataProvider.ExecuteQuery(query);
         }
 
         public int KiemTraTonTaiMaThuoc(string mathuoc)

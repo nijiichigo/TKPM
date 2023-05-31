@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D6FDB68-BE4C-4F00-9C4C-D7597ED4A94A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QUANLYPHONGKHAM</RootNamespace>
+    <AssemblyName>QUANLYPHONGKHAM</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\DataProvider.cs" />
+    <Compile Include="DAL\IDataProvider.cs" />
+    <Compile Include="DAL\ILuuTru.cs" />
+    <Compile Include="DAL\LuuTru.cs" />
+    <Compile Include="DATABASE\DatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ENTITIES\TaiKhoan.cs" />
+    <Compile Include="FORM\fDangKyKham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fDangKyKham.Designer.cs">
+      <DependentUpon>fDangKyKham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fDangNhap.Designer.cs">
+      <DependentUpon>fDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fDanhMucThuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fDanhMucThuoc.Designer.cs">
+      <DependentUpon>fDanhMucThuoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fDoiMatKhau.Designer.cs">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fManHinhChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fManHinhChinh.Designer.cs">
+      <DependentUpon>fManHinhChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fMatKhauMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fMatKhauMoi.Designer.cs">
+      <DependentUpon>fMatKhauMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fPhieuKham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fPhieuKham.Designer.cs">
+      <DependentUpon>fPhieuKham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\fTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\fTaiKhoan.Designer.cs">
+      <DependentUpon>fTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FORM\temp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORM\temp.Designer.cs">
+      <DependentUpon>temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SERVICE\IXuLyBenhNhan.cs" />
+    <Compile Include="SERVICE\IXuLyChung.cs" />
+    <Compile Include="SERVICE\IXuLyDangKyKham.cs" />
+    <Compile Include="SERVICE\IXuLyNhomThuoc.cs" />
+    <Compile Include="SERVICE\IXuLyPhieuKham.cs" />
+    <Compile Include="SERVICE\IXuLyTaiKhoan.cs" />
+    <Compile Include="SERVICE\IXuLyThuoc.cs" />
+    <Compile Include="SERVICE\XuLyBenhNhan.cs" />
+    <Compile Include="SERVICE\XuLyChung.cs" />
+    <Compile Include="SERVICE\XuLyDangKyKham.cs" />
+    <Compile Include="SERVICE\XuLyNhomThuoc.cs" />
+    <Compile Include="SERVICE\XuLyPhieuKham.cs" />
+    <Compile Include="SERVICE\XuLyTaiKhoan.cs" />
+    <Compile Include="SERVICE\XuLyThuoc.cs" />
+    <EmbeddedResource Include="FORM\fDangKyKham.resx">
+      <DependentUpon>fDangKyKham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fDangNhap.resx">
+      <DependentUpon>fDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fDanhMucThuoc.resx">
+      <DependentUpon>fDanhMucThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fDoiMatKhau.resx">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fManHinhChinh.resx">
+      <DependentUpon>fManHinhChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fMatKhauMoi.resx">
+      <DependentUpon>fMatKhauMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fPhieuKham.resx">
+      <DependentUpon>fPhieuKham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\fTaiKhoan.resx">
+      <DependentUpon>fTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORM\temp.resx">
+      <DependentUpon>temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="DATABASE\DatabaseDataSet.xsc">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DATABASE\DatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DATABASE\DatabaseDataSet.xss">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DATABASE\Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DATABASE\Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
